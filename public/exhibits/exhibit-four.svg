@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360" role="img" aria-label="归批展陈图">
-  <rect width="560" height="360" fill="#f8f3e8"/>
-  <path d="M0 318c120-50 238-50 354 0s164 50 206 0v42H0z" fill="#a51f18" opacity=".12"/>
-  <g fill="none" stroke="#a51f18" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M74 244c96-106 236-106 332 0M138 244V126h204v118"/>
-    <path d="M190 164h98M190 198h122M190 232h74"/>
-  </g>
-  <text x="474" y="76" writing-mode="tb" fill="#a51f18" font-size="42" font-family="serif">归批</text>
-</svg>

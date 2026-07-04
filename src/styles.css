@@ -81,45 +81,161 @@ button {
 
 .hall-section {
   min-height: 100vh;
-  padding: 76px 7vw 72px 128px;
+  padding: 96px 7vw 80px 128px;
   position: relative;
 }
 .hero {
   display: grid;
   place-items: center;
   overflow: hidden;
+  isolation: isolate;
+  padding: 0;
+  min-height: 100vh;
+  text-align: left;
 }
-.hero-video,
-.ink-wash {
+
+/* ---------- Dynamic Backdrop ---------- */
+.dynamic-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.bg-layer {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
 }
-.hero-video {
-  object-fit: cover;
-  filter: sepia(1) saturate(1.7) contrast(0.72) brightness(1.25);
-}
-.ink-wash {
+.bg-paper {
   background:
-    linear-gradient(90deg, rgba(248, 243, 232, 0.78), rgba(248, 243, 232, 0.36)),
-    repeating-linear-gradient(90deg, transparent 0 22px, rgba(165, 31, 24, 0.08) 23px 24px);
+    radial-gradient(circle at 20% 15%, rgba(165, 31, 24, 0.08), transparent 35%),
+    radial-gradient(circle at 80% 85%, rgba(165, 31, 24, 0.10), transparent 40%),
+    linear-gradient(180deg, #f8f3e8 0%, #f0e5cd 60%, #e8d9bb 100%);
 }
+.bg-vignette {
+  background:
+    radial-gradient(ellipse at center, transparent 50%, rgba(111, 22, 15, 0.18) 100%);
+}
+.bg-ink-tide {
+  background: radial-gradient(60% 40% at 30% 70%,
+    rgba(165, 31, 24, 0.18), transparent 70%);
+  filter: blur(40px);
+  animation: tideDrift 18s ease-in-out infinite alternate;
+}
+.bg-ink-tide--alt {
+  background: radial-gradient(45% 35% at 75% 30%,
+    rgba(165, 31, 24, 0.22), transparent 70%);
+  animation-duration: 24s;
+  animation-direction: alternate-reverse;
+}
+.bg-grain {
+  opacity: 0.32;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.65  0 0 0 0 0.12  0 0 0 0 0.09  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size: 220px 220px;
+  animation: grainShift 6s steps(6) infinite;
+}
+.bg-currents {
+  width: 100%;
+  height: 100%;
+  opacity: 0.55;
+}
+.current-stroke {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: drawCurrent 14s ease-in-out infinite;
+}
+.floating-stamps,
+.drift-petals {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.floating-stamp {
+  position: absolute;
+  bottom: -80px;
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  font-family: "Ma Shan Zheng", "Noto Serif SC", serif;
+  font-size: 28px;
+  color: rgba(165, 31, 24, 0.6);
+  border: 2px solid rgba(165, 31, 24, 0.45);
+  background: rgba(248, 243, 232, 0.08);
+  transform: rotate(-8deg);
+  animation: stampFloat 18s linear infinite;
+}
+.floating-stamp:nth-child(odd) {
+  color: rgba(165, 31, 24, 0.45);
+  transform: rotate(6deg);
+}
+.drift-petal {
+  position: absolute;
+  bottom: -30px;
+  width: 14px;
+  height: 14px;
+  border-radius: 60% 40% 60% 40%;
+  background: linear-gradient(135deg, rgba(165, 31, 24, 0.55), rgba(165, 31, 24, 0.18));
+  filter: blur(0.4px);
+  animation: petalDrift 22s linear infinite;
+}
+@keyframes tideDrift {
+  0%   { transform: translate3d(-4%, -2%, 0) scale(1); }
+  50%  { transform: translate3d(6%, 4%, 0) scale(1.08); }
+  100% { transform: translate3d(-2%, 6%, 0) scale(1.04); }
+}
+@keyframes grainShift {
+  0%   { background-position: 0 0; }
+  100% { background-position: 220px 220px; }
+}
+@keyframes drawCurrent {
+  0%   { stroke-dashoffset: 1200; opacity: 0; }
+  20%  { opacity: 0.85; }
+  100% { stroke-dashoffset: -1200; opacity: 0; }
+}
+@keyframes stampFloat {
+  0%   { transform: translateY(0)     rotate(-8deg); opacity: 0; }
+  10%  { opacity: 0.6; }
+  50%  { transform: translateY(-55vh) rotate(8deg); opacity: 0.6; }
+  90%  { opacity: 0.3; }
+  100% { transform: translateY(-110vh) rotate(-4deg); opacity: 0; }
+}
+@keyframes petalDrift {
+  0%   { transform: translate(0, 0) rotate(0deg);   opacity: 0; }
+  10%  { opacity: 0.7; }
+  50%  { transform: translate(40px, -55vh) rotate(180deg); opacity: 0.7; }
+  100% { transform: translate(-30px, -110vh) rotate(360deg); opacity: 0; }
+}
+
 .hero-copy {
   position: relative;
   z-index: 2;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
   display: flex;
-  align-items: center;
-  gap: 18px;
-  min-height: 62vh;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 24px 28px;
+  max-width: min(1100px, 78vw);
+  padding: 0 7vw 0 128px;
+  color: var(--ink);
 }
 .hero-copy p,
-.hero-copy strong {
+.hero-copy strong,
+.hero-copy em {
   margin: 0;
   font-size: clamp(16px, 2vw, 24px);
   letter-spacing: 0;
+}
+.hero-copy em {
+  font-style: normal;
+  font-family: "ZCOOL XiaoWei", "Noto Serif SC", serif;
+  color: var(--red);
+  letter-spacing: 0.1em;
+  opacity: 0.85;
+  flex-basis: 100%;
 }
 .hero-copy h1 {
   margin: 0;
@@ -128,12 +244,21 @@ button {
   line-height: 1.02;
   font-weight: 400;
   letter-spacing: 0;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: clamp(8px, 1.2vw, 18px);
+  writing-mode: horizontal-tb;
+}
+.hero-copy h1 span {
+  display: inline-block;
 }
 .floor-plan {
   position: absolute;
   right: 6vw;
   bottom: 34px;
   width: min(360px, 44vw);
+  z-index: 3;
 }
 .floor-plan svg {
   width: 100%;
@@ -151,52 +276,241 @@ button {
 
 .plaque-hall {
   display: grid;
+  grid-template-columns: minmax(320px, 1.25fr) minmax(260px, 0.85fr);
+  gap: 56px;
   align-items: center;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  border-bottom: 1px dashed rgba(165, 31, 24, 0.25);
 }
-.plaque-hall figure {
+.plaque-hall:last-of-type {
+  border-bottom: none;
+}
+.plaque-hall--flip {
+  grid-template-columns: minmax(260px, 0.85fr) minmax(320px, 1.25fr);
+}
+.plaque-hall--flip .plaque-frame   { order: 2; }
+.plaque-hall--flip .plaque-placard { order: 1; }
+
+/* ----- image frame ----- */
+.plaque-frame {
   margin: 0;
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(260px, 1.05fr) minmax(220px, 0.55fr);
-  gap: 36px;
-  align-items: center;
+  place-items: center;
 }
-.plaque-hall img {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
+.plaque-shadow {
+  position: absolute;
+  inset: 14px -10px -14px 18px;
+  background: rgba(111, 22, 15, 0.12);
+  filter: blur(18px);
+  z-index: 0;
+}
+.plaque-image-wrap {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  background: #f8f3e8;
+  padding: 12px 12px 14px;
+  border: 1px solid rgba(165, 31, 24, 0.45);
+  box-shadow:
+    0 30px 60px -20px rgba(111, 22, 15, 0.35),
+    0 0 0 6px rgba(248, 243, 232, 0.6) inset;
+  max-width: 100%;
+}
+.plaque-image {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 78vh;
+  height: auto;
+  object-fit: contain;
+  filter: sepia(0.4) saturate(1.1) contrast(0.92) brightness(0.98);
+}
+.plaque-hall--landscape .plaque-image { max-height: 62vh; }
+.plaque-hall--tall     .plaque-image { max-height: 82vh; }
+.plaque-hall--portrait .plaque-image { max-height: 78vh; }
+
+.plaque-corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--red);
+}
+.plaque-corner--tl { top: -2px; left: -2px;  border-right: 0; border-bottom: 0; }
+.plaque-corner--tr { top: -2px; right: -2px; border-left: 0;  border-bottom: 0; }
+.plaque-corner--bl { bottom: -2px; left: -2px;  border-right: 0; border-top: 0; }
+.plaque-corner--br { bottom: -2px; right: -2px; border-left: 0;  border-top: 0; }
+
+.plaque-seal {
+  position: absolute;
+  right: -18px;
+  bottom: -18px;
+  width: 78px;
+  height: 78px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-family: "Ma Shan Zheng", serif;
+  font-size: 22px;
+  color: #f8f3e8;
+  background: var(--red);
+  border-radius: 6px;
+  transform: rotate(-6deg);
+  letter-spacing: 0;
+  box-shadow: 0 6px 18px rgba(111, 22, 15, 0.35);
+}
+
+/* ----- placard / caption column ----- */
+.plaque-placard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 30px 28px;
+  background:
+    linear-gradient(180deg, rgba(248, 243, 232, 0.85), rgba(248, 243, 232, 0.6));
   border: 1px solid var(--red);
-  filter: sepia(1) saturate(1.25) contrast(0.82);
-}
-.plaque-hall figcaption {
-  border: 2px solid var(--red);
-  padding: 28px;
-  background: rgba(248, 243, 232, 0.78);
-  writing-mode: vertical-rl;
   min-height: 360px;
 }
-.plaque-hall span,
-.section-title span {
-  font-family: "Ma Shan Zheng", serif;
-  font-size: 28px;
+.plaque-placard::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px dashed rgba(165, 31, 24, 0.35);
+  pointer-events: none;
 }
-.plaque-hall h2,
-.section-title h2 {
-  margin: 0 12px;
+.plaque-head {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.plaque-no {
+  font-family: "Ma Shan Zheng", serif;
+  font-size: 24px;
+  color: var(--red);
+  letter-spacing: 0.1em;
+}
+.plaque-head h2 {
+  margin: 0;
   font-family: "Ma Shan Zheng", "Noto Serif SC", serif;
-  font-size: clamp(46px, 6vw, 86px);
+  font-size: clamp(48px, 6vw, 78px);
+  line-height: 1;
   font-weight: 400;
 }
-.plaque-hall p {
-  margin: 0;
-  line-height: 2.1;
-  font-size: 18px;
+.plaque-head small {
+  font-family: "ZCOOL XiaoWei", "Noto Serif SC", serif;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  color: rgba(165, 31, 24, 0.7);
 }
+.plaque-caption {
+  margin: 0;
+  line-height: 2;
+  font-size: 17px;
+  color: var(--ink);
+}
+.plaque-lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(111, 22, 15, 0.85);
+}
+.plaque-lines li {
+  display: flex;
+  gap: 8px;
+  padding-left: 12px;
+  border-left: 2px solid rgba(165, 31, 24, 0.4);
+}
+.plaque-bullet { color: var(--red); }
+.plaque-foot {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: rgba(165, 31, 24, 0.75);
+  border-top: 1px solid rgba(165, 31, 24, 0.3);
+  padding-top: 14px;
+}
+.plaque-back {
+  border-bottom: 1px solid rgba(165, 31, 24, 0.45);
+  padding-bottom: 1px;
+}
+.plaque-back:hover { color: var(--red); }
 
 .section-title {
   display: flex;
   align-items: baseline;
   gap: 10px;
   margin-bottom: 28px;
+}
+
+/* ----- Music Hall ----- */
+.music-hall {
+  display: grid;
+  place-items: center;
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+.music-shell {
+  width: min(820px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  text-align: center;
+  padding: 36px 32px 32px;
+  border: 1px solid var(--red);
+  background:
+    linear-gradient(180deg, rgba(248, 243, 232, 0.85), rgba(248, 243, 232, 0.55));
+  position: relative;
+}
+.music-shell::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px dashed rgba(165, 31, 24, 0.35);
+  pointer-events: none;
+}
+.music-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.music-mark {
+  font-family: "Ma Shan Zheng", serif;
+  font-size: 24px;
+  color: var(--red);
+  letter-spacing: 0.18em;
+}
+.music-head h2 {
+  margin: 0;
+  font-family: "Ma Shan Zheng", "Noto Serif SC", serif;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 400;
+}
+.music-head p {
+  margin: 0;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  color: rgba(111, 22, 15, 0.8);
+  line-height: 1.8;
+  max-width: 520px;
+}
+.music-frame {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+.music-frame iframe {
+  background: #f8f3e8;
 }
 .wall-tools {
   display: grid;
@@ -419,23 +733,56 @@ button {
   }
   .nav-seal small { display: none; }
   .hall-section {
-    padding: 48px 20px 92px;
+    padding: 56px 20px 96px;
   }
   .hero-copy {
-    min-height: 55vh;
+    min-height: 0;
+    padding: 0 20px;
+    gap: 14px 16px;
+    max-width: 100%;
+  }
+  .hero-copy h1 {
+    gap: 6px;
+  }
+  .music-hall {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+  .music-shell {
+    padding: 24px 18px;
   }
   .floor-plan {
     width: calc(100% - 40px);
     right: 20px;
   }
-  .plaque-hall figure,
+  .plaque-hall,
+  .plaque-hall--flip {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  .plaque-hall--flip .plaque-frame,
+  .plaque-hall--flip .plaque-placard {
+    order: initial;
+  }
+  .plaque-image {
+    max-height: 70vh;
+  }
+  .plaque-seal {
+    width: 60px;
+    height: 60px;
+    font-size: 18px;
+    right: -8px;
+    bottom: -8px;
+  }
+  .plaque-placard {
+    min-height: 0;
+    padding: 22px 20px;
+  }
   .composer-layout,
   .detail-letter {
     grid-template-columns: 1fr;
-  }
-  .plaque-hall figcaption {
-    writing-mode: horizontal-tb;
-    min-height: auto;
   }
   .paper-stage {
     min-height: 520px;
@@ -448,4 +795,5 @@ button {
     writing-mode: horizontal-tb;
     max-height: none;
   }
+  .floating-stamp { width: 48px; height: 48px; font-size: 20px; }
 }

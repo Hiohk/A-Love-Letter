@@ -1,4 +1,44 @@
-node_modules
-dist
-.DS_Store
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 *.log
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Coverage / cache
+coverage/
+.nyc_output/
+.cache/
+.tmp/
+
+# Docker overrides
+*.tar
+*.tar.gz
+
+# Generated content drafts (keep data/, ignore drafts/)
+content-drafts/

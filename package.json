@@ -7,7 +7,12 @@
     "generate:content": "node scripts/generate-content.mjs",
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
-    "preview": "vite preview --host 127.0.0.1"
+    "preview": "vite preview --host 127.0.0.1",
+    "docker:build": "docker build -t a-love-letter:latest .",
+    "docker:run": "docker run -d --name a-love-letter --restart unless-stopped -p 8080:80 a-love-letter:latest",
+    "docker:up": "docker compose up -d --build",
+    "docker:down": "docker compose down",
+    "deploy": "bash scripts/deploy.sh"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^5.0.0",
