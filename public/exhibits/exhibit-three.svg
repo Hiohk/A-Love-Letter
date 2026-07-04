@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360" role="img" aria-label="代笔展陈图">
+  <rect width="560" height="360" fill="#f8f3e8"/>
+  <path d="M0 318c120-50 238-50 354 0s164 50 206 0v42H0z" fill="#a51f18" opacity=".12"/>
+  <g fill="none" stroke="#a51f18" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M98 270h360M150 118h190v132H150zM354 126l88 84"/>
+    <path d="M200 168c34 18 68 18 102 0M207 208h80"/>
+  </g>
+  <text x="474" y="76" writing-mode="tb" fill="#a51f18" font-size="42" font-family="serif">代笔</text>
+</svg>

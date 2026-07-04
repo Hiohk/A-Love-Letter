@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" role="img" aria-label="廖春杏剪影">
+  <rect width="120" height="140" fill="#f8f3e8"/>
+  <g fill="#a51f18" stroke="#a51f18" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M42 43c1-17 29-23 40 0 4 11-3 17-11 19-10 2-24-5-29-19z"/>
+    <circle cx="60" cy="53" r="29"/>
+    <path d="M31 132c4-33 16-49 34-49s31 16 35 49z"/>
+    <path d="M39 70c12 7 35 7 46 0" />
+  </g>
+</svg>

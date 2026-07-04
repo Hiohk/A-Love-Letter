@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360" role="img" aria-label="离乡展陈图">
+  <rect width="560" height="360" fill="#f8f3e8"/>
+  <path d="M0 318c120-50 238-50 354 0s164 50 206 0v42H0z" fill="#a51f18" opacity=".12"/>
+  <g fill="none" stroke="#a51f18" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M40 280c85-70 153-70 235 0s150 70 235 0"/>
+    <path d="M92 212h110l38 42H72zM338 212h86l30 42H320z"/>
+  </g>
+  <text x="474" y="76" writing-mode="tb" fill="#a51f18" font-size="42" font-family="serif">离乡</text>
+</svg>

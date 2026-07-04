@@ -1,0 +1,451 @@
+@import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600;700&family=ZCOOL+XiaoWei&display=swap');
+
+:root {
+  color: #8e1d17;
+  background: #f8f3e8;
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  --paper: #f8f3e8;
+  --paper-deep: #efe3cd;
+  --red: #a51f18;
+  --red-soft: rgba(165, 31, 24, 0.14);
+  --ink: #6f160f;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(165, 31, 24, 0.08), transparent 28%),
+    linear-gradient(90deg, rgba(165, 31, 24, 0.035) 1px, transparent 1px),
+    var(--paper);
+  background-size: auto, 28px 28px, auto;
+}
+
+a { color: inherit; text-decoration: none; }
+button, input, select {
+  color: var(--red);
+  font: inherit;
+}
+button {
+  border: 1px solid var(--red);
+  background: transparent;
+  cursor: pointer;
+}
+
+.museum-nav {
+  position: fixed;
+  z-index: 20;
+  inset: 20px auto 20px 18px;
+  width: 76px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  color: var(--red);
+}
+.home-mark,
+.nav-seal {
+  background: rgba(248, 243, 232, 0.9);
+  border: 1px solid var(--red);
+  box-shadow: 0 10px 30px rgba(111, 22, 15, 0.08);
+}
+.home-mark {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+}
+.museum-nav nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.nav-seal {
+  width: 58px;
+  min-height: 62px;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 3px;
+  writing-mode: vertical-rl;
+}
+.nav-seal span {
+  font-family: "Ma Shan Zheng", "Noto Serif SC", serif;
+  font-size: 25px;
+}
+.nav-seal small {
+  font-size: 11px;
+}
+
+.hall-section {
+  min-height: 100vh;
+  padding: 76px 7vw 72px 128px;
+  position: relative;
+}
+.hero {
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.hero-video,
+.ink-wash {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.hero-video {
+  object-fit: cover;
+  filter: sepia(1) saturate(1.7) contrast(0.72) brightness(1.25);
+}
+.ink-wash {
+  background:
+    linear-gradient(90deg, rgba(248, 243, 232, 0.78), rgba(248, 243, 232, 0.36)),
+    repeating-linear-gradient(90deg, transparent 0 22px, rgba(165, 31, 24, 0.08) 23px 24px);
+}
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-height: 62vh;
+}
+.hero-copy p,
+.hero-copy strong {
+  margin: 0;
+  font-size: clamp(16px, 2vw, 24px);
+  letter-spacing: 0;
+}
+.hero-copy h1 {
+  margin: 0;
+  font-family: "Ma Shan Zheng", "ZCOOL XiaoWei", "Noto Serif SC", serif;
+  font-size: clamp(56px, 9vw, 132px);
+  line-height: 1.02;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.floor-plan {
+  position: absolute;
+  right: 6vw;
+  bottom: 34px;
+  width: min(360px, 44vw);
+}
+.floor-plan svg {
+  width: 100%;
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 2;
+}
+.floor-plan text {
+  fill: var(--red);
+  stroke: none;
+  font-family: "Ma Shan Zheng", serif;
+  font-size: 22px;
+  text-anchor: middle;
+}
+
+.plaque-hall {
+  display: grid;
+  align-items: center;
+}
+.plaque-hall figure {
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(260px, 1.05fr) minmax(220px, 0.55fr);
+  gap: 36px;
+  align-items: center;
+}
+.plaque-hall img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border: 1px solid var(--red);
+  filter: sepia(1) saturate(1.25) contrast(0.82);
+}
+.plaque-hall figcaption {
+  border: 2px solid var(--red);
+  padding: 28px;
+  background: rgba(248, 243, 232, 0.78);
+  writing-mode: vertical-rl;
+  min-height: 360px;
+}
+.plaque-hall span,
+.section-title span {
+  font-family: "Ma Shan Zheng", serif;
+  font-size: 28px;
+}
+.plaque-hall h2,
+.section-title h2 {
+  margin: 0 12px;
+  font-family: "Ma Shan Zheng", "Noto Serif SC", serif;
+  font-size: clamp(46px, 6vw, 86px);
+  font-weight: 400;
+}
+.plaque-hall p {
+  margin: 0;
+  line-height: 2.1;
+  font-size: 18px;
+}
+
+.section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.wall-tools {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--red);
+  max-width: 520px;
+  padding: 10px 0;
+}
+.search-box input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+}
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+.tag-row button,
+.composer-panel button,
+.detail-letter button {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 14px;
+}
+.tag-row .is-active {
+  background: var(--red);
+  color: var(--paper);
+}
+.letter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 16px;
+}
+.letter-card {
+  position: relative;
+  border: 1px solid rgba(165, 31, 24, 0.35);
+  background: rgba(248, 243, 232, 0.72);
+  min-height: 284px;
+  padding: 14px;
+}
+.letter-card img {
+  width: 86px;
+  height: 100px;
+  object-fit: cover;
+  border: 1px solid var(--red);
+}
+.letter-card h3 {
+  margin: 10px 0 5px;
+  font-size: 21px;
+}
+.letter-card p,
+.letter-card blockquote {
+  margin: 0;
+  line-height: 1.7;
+  font-size: 14px;
+}
+.letter-card blockquote {
+  margin-top: 8px;
+}
+.heart-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  background: var(--paper);
+}
+
+.composer-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 320px) 1fr;
+  gap: 36px;
+  align-items: start;
+}
+.composer-panel {
+  border: 1px solid var(--red);
+  padding: 20px;
+  display: grid;
+  gap: 15px;
+  background: rgba(248, 243, 232, 0.75);
+}
+.composer-panel label {
+  display: grid;
+  gap: 7px;
+}
+.composer-panel input,
+.composer-panel select {
+  min-height: 38px;
+  border: 1px solid rgba(165, 31, 24, 0.5);
+  background: rgba(255, 255, 255, 0.28);
+  padding: 6px 9px;
+}
+.paper-stage {
+  min-height: 620px;
+  display: grid;
+  place-items: center;
+}
+.letter-paper {
+  width: min(520px, 100%);
+  min-height: 580px;
+  padding: 34px 34px 28px;
+  background:
+    linear-gradient(135deg, transparent 12px, var(--paper) 0) top left,
+    linear-gradient(225deg, transparent 12px, var(--paper) 0) top right,
+    linear-gradient(315deg, transparent 12px, var(--paper) 0) bottom right,
+    linear-gradient(45deg, transparent 12px, var(--paper) 0) bottom left;
+  background-size: 51% 51%;
+  background-repeat: no-repeat;
+  border: 1px solid var(--red);
+  box-shadow: 0 22px 60px rgba(111, 22, 15, 0.12);
+  color: var(--ink);
+}
+.letter-paper p,
+.letter-paper footer {
+  writing-mode: vertical-rl;
+  line-height: 2;
+  letter-spacing: 0;
+}
+.letter-paper p {
+  height: 390px;
+  margin: 16px auto;
+  font-size: 22px;
+}
+.letter-paper footer {
+  margin-left: 0;
+}
+.envelope {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 2px solid var(--red);
+  padding: 12px 16px;
+}
+.envelope strong {
+  font-family: "Ma Shan Zheng", serif;
+  font-size: 50px;
+  font-weight: 400;
+}
+.end-hall {
+  display: grid;
+  place-items: center;
+  min-height: 70vh;
+}
+.end-hall p {
+  writing-mode: vertical-rl;
+  font-family: "Ma Shan Zheng", serif;
+  font-size: clamp(34px, 5vw, 72px);
+}
+
+.detail-shell {
+  min-height: 100vh;
+  padding: 42px 7vw;
+  background: var(--paper);
+}
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--red);
+  margin-bottom: 32px;
+}
+.detail-letter {
+  display: grid;
+  grid-template-columns: minmax(180px, 280px) 1fr;
+  gap: 34px;
+  align-items: start;
+}
+.detail-letter img {
+  width: 100%;
+  border: 1px solid var(--red);
+}
+.detail-letter h1 {
+  font-family: "Ma Shan Zheng", serif;
+  font-size: clamp(48px, 7vw, 90px);
+  margin: 4px 0 10px;
+  font-weight: 400;
+}
+.detail-letter p {
+  writing-mode: vertical-rl;
+  max-height: 520px;
+  line-height: 2.2;
+  font-size: 24px;
+}
+
+@media (max-width: 820px) {
+  .museum-nav {
+    inset: auto 0 0 0;
+    width: auto;
+    height: 72px;
+    flex-direction: row;
+    justify-content: center;
+    padding: 8px;
+    background: rgba(248, 243, 232, 0.92);
+    border-top: 1px solid rgba(165, 31, 24, 0.3);
+  }
+  .home-mark { display: none; }
+  .museum-nav nav {
+    flex-direction: row;
+    overflow-x: auto;
+    width: 100%;
+  }
+  .nav-seal {
+    min-width: 46px;
+    width: 46px;
+    min-height: 52px;
+  }
+  .nav-seal small { display: none; }
+  .hall-section {
+    padding: 48px 20px 92px;
+  }
+  .hero-copy {
+    min-height: 55vh;
+  }
+  .floor-plan {
+    width: calc(100% - 40px);
+    right: 20px;
+  }
+  .plaque-hall figure,
+  .composer-layout,
+  .detail-letter {
+    grid-template-columns: 1fr;
+  }
+  .plaque-hall figcaption {
+    writing-mode: horizontal-tb;
+    min-height: auto;
+  }
+  .paper-stage {
+    min-height: 520px;
+  }
+  .letter-paper p {
+    height: 320px;
+    font-size: 18px;
+  }
+  .detail-letter p {
+    writing-mode: horizontal-tb;
+    max-height: none;
+  }
+}

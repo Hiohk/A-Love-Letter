@@ -1,0 +1,24 @@
+{
+  "name": "a-love-letter",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "generate:content": "node scripts/generate-content.mjs",
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "vite": "^7.0.0",
+    "typescript": "^5.8.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.0",
+    "framer-motion": "^12.20.0",
+    "html2canvas": "^1.4.1",
+    "lucide-react": "^0.468.0"
+  },
+  "devDependencies": {}
+}
