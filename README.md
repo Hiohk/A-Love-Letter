@@ -234,16 +234,3 @@ jobs:
 MIT © Contributors — 详见 [LICENSE](./LICENSE)
 
 如果你用这个仓库做了延伸作品，欢迎提 Issue / PR。
-
----
-
-## A Letter to Grandma · Qiaopi Virtual Museum
-
-*A React + Vite single-page application that frames an overseas-Chinese epistolary museum as a letter to grandma. Includes four exhibit halls, an Apple Music embed, postcard export, and a Docker-ready nginx image.*
-
-```bash
-npm install && npm run dev
-docker compose up -d --build
-```
-
-Made with 🌊 in a paper-thin browser.
